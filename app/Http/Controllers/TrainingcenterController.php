@@ -30,7 +30,7 @@ class TrainingcenterController extends Controller
       
         $trainingcenters ->save();
         
-        return $trainingcenters;
+        return Redirect()-> route('trainingcenter.index');
 
     }
 }

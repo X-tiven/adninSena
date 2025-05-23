@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\Area;
+use Illuminate\Support\Facades\Redirect;
 
 class AreaController extends Controller
 {
@@ -29,7 +30,7 @@ class AreaController extends Controller
       
         $areas ->save();
         
-        return $areas;
+        return Redirect()-> route('area.index');
 
     }
 }

@@ -30,7 +30,7 @@ class ComputerController extends Controller
       
         $computers ->save();
         
-        return $computers;
+        return Redirect()-> route('computer.index');
 
     }
 }
