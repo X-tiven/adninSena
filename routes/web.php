@@ -14,6 +14,10 @@ Route::get('/', function () {
 Route::get('areas', [AreaController::class, 'index'])->name('area.index');
 Route::get('areas/create', [AreaController::class, 'create'])->name('area.create');
 Route::post('areas/store', [AreaController::class, 'store'])->name('area.store');
+Route::get('area/{area}', [AreaController::class, 'show'])->name('area.show');
+Route::delete('area/{area}',[AreaController::class,'destroy'])->name('area.destroy');
+Route::put('area/{area}',[AreaController::class,'update'])->name('area.update');
+Route::get('area/{area}/editar',[AreaController::class,'edit'])->name('area.edit');
 
 //Rutas Trainingcenter
 Route::get('trainingcenters', [TrainingcenterController::class, 'index'])->name('trainingcenter.index');

@@ -11,7 +11,9 @@
                 <tr>
                     <th>ID</th>
                     <th>Area</th>
-                    
+                    <th></th>
+                    <th></th>
+                    <th></th>
                 </tr>
             </thead>
             <tbody>
@@ -19,8 +21,19 @@
                     <tr>
                         <td>{{ $area['id'] }}</td>
                         <td>{{ $area['name'] }}</td>
-                        
+                        <td><a href="{{ route('area.show', $area['id']) }}" class="btn btn-info btn-sm">Ver más</a></td>
+                         <td><a href="{{ route('area.edit', $area->id) }}"class="btn btn-success btn-sm">Editar</a></td>
+                        <td>
+                        <form action="{{ route('area.destroy', $area->id) }}" method="POST">
+                            @csrf
+                            @method('delete')
+                            <button type="submit" class="btn btn-danger d-flex align-items-center gap-2">
+                                <i class="bi bi-trash-fill"></i> Eliminar
+                            </button>
+                        </form>
+                        </td>
                     </tr>
+                    
                 @endforeach
             </tbody>
         </table>
