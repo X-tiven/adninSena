@@ -23,8 +23,17 @@ Route::get('area/{area}/editar',[AreaController::class,'edit'])->name('area.edit
 Route::get('trainingcenters', [TrainingcenterController::class, 'index'])->name('trainingcenter.index');
 Route::get('trainingcenters/create', [TrainingcenterController::class, 'create'])->name('trainingcenter.create');
 Route::post('trainingcenters/store', [TrainingcenterController::class, 'store'])->name('trainingcenter.store');
+Route::get('trainingcenter/{trainingcenter}', [TrainingcenterController::class, 'show'])->name('trainingcenter.show');
+Route::delete('trainingcenter/{trainingcenter}',[TrainingcenterController::class,'destroy'])->name('trainingcenter.destroy');
+Route::put('trainingcenter/{trainingcenter}',[TrainingcenterController::class,'update'])->name('trainingcenter.update');
+Route::get('trainingcenter/{trainingcenter}/editar',[TrainingcenterController::class,'edit'])->name('trainingcenter.edit');
+
 
 //Rutas Computer
 Route::get('computers', [ComputerController::class, 'index'])->name('computer.index');
 Route::get('computers/create', [ComputerController::class, 'create'])->name('computer.create');
 Route::post('computers/store', [ComputerController::class, 'store'])->name('computer.store');
+Route::get('computer/{computer}', [ComputerController::class, 'show'])->name('computer.show');
+Route::delete('computer/{computer}',[ComputerController::class,'destroy'])->name('computer.destroy');
+Route::put('computer/{computer}',[ComputerController::class,'update'])->name('computer.update');
+Route::get('computer/{computer}/editar',[ComputerController::class,'edit'])->name('computer.edit');

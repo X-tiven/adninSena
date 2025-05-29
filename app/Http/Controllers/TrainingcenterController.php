@@ -9,9 +9,9 @@ class TrainingcenterController extends Controller
 {
           public function index(){
 
-        $trainingcenters = Trainingcenter::all();
+        $trainingcenter = Trainingcenter::all();
 
-        return view('trainingcenter.index', compact('trainingcenters'));
+        return view('trainingcenter.index', compact('trainingcenter'));
 
     }
 
@@ -23,14 +23,44 @@ class TrainingcenterController extends Controller
 
     public function store(Request $request){
 
-        $trainingcenters = new Trainingcenter();
+        $trainingcenter = new Trainingcenter();
 
-        $trainingcenters ->name=$request->name;
-        $trainingcenters->location = $request->location;
+        $trainingcenter ->name=$request->name;
+        $trainingcenter->location = $request->location;
       
-        $trainingcenters ->save();
+        $trainingcenter ->save();
         
         return Redirect()-> route('trainingcenter.index');
 
     }
+
+    public function show($id){
+
+        $trainingcenter = Trainingcenter::find($id);
+       
+        return view('trainingcenter.show', compact('trainingcenter'));
+    }
+
+    public function destroy (Trainingcenter $trainingcenter){
+        
+        $trainingcenter->delete();
+
+        return redirect()->route('trainingcenter.index');
+    }
+
+     public function edit(Trainingcenter $trainingcenter){
+
+        return view('trainingcenter.edit',compact('trainingcenter'));
+
+      }
+
+    public function update(Request $request, Trainingcenter $trainingcenter){
+
+        $trainingcenter->name = $request->name;
+        $trainingcenter->location = $request->location;
+        $trainingcenter->save();
+    
+        return redirect()->route('trainingcenter.index');
+
+      }
 }

@@ -12,16 +12,29 @@
                     <th>ID</th>
                     <th>Area</th>
                     <th>Location</th>
+                    <th></th>
+                    <th></th>
+                    <th></th>
                     
                 </tr>
             </thead>
             <tbody>
-                @foreach ($trainingcenters as $trainingcenter)
+                @foreach ($trainingcenter as $trainingcenters)
                     <tr>
-                        <td>{{ $trainingcenter['id'] }}</td>
-                        <td>{{ $trainingcenter['name'] }}</td>
-                        <td>{{ $trainingcenter['location'] }}</td>
-                        
+                        <td>{{ $trainingcenters['id'] }}</td>
+                        <td>{{ $trainingcenters['name'] }}</td>
+                        <td>{{ $trainingcenters['location'] }}</td>
+                        <td><a href="{{ route('trainingcenter.show', $trainingcenters['id']) }}" class="btn btn-info btn-sm">Ver más</a></td>
+                         <td><a href="{{ route('trainingcenter.edit', $trainingcenters->id) }}"class="btn btn-success btn-sm">Editar</a></td>
+                        <td>
+                        <form action="{{ route('trainingcenter.destroy', $trainingcenters->id) }}" method="POST">
+                            @csrf
+                            @method('delete')
+                            <button type="submit" class="btn btn-danger d-flex align-items-center gap-2">
+                                <i class="bi bi-trash-fill"></i> Eliminar
+                            </button>
+                        </form>
+                        </td>
                     </tr>
                 @endforeach
             </tbody>
